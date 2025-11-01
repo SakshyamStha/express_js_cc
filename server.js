@@ -6,14 +6,40 @@ const app = express();
 
 app.listen(8000, ()=> console.log("Server is running in port 8000"));
 
-app.get('/',(req,res)=>{
-    // res.send("k xaaa") 
-    // res.send({
-    //     message: "jserguisb gjkrbguwsb",
-    //     test: "hjgrbsb"
-    // }) 
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-} )
-app.get('/about',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+
+//setup static folder
+app.use(express.static(path.join(__dirname, 'public')))
+
+
+// app.get('/',(req,res)=>{
+//     // res.send("k xaaa") 
+//     // res.send({
+//     //     message: "jserguisb gjkrbguwsb",
+//     //     test: "hjgrbsb"
+//     // }) 
+//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// } )
+// app.get('/about',(req,res)=>{
+//     res.sendFile(path.join(__dirname, 'public', 'about.html'));
+// } )
+
+
+
+let posts =[
+    {
+        id:1,
+        title: 'Post 1'
+    },
+    {
+        id:2,
+        title: 'Post 2'
+    },
+    {
+        id:3,
+        title: 'Post 3'
+    }
+]
+
+app.get('/api/posts', (req,res)=>{
+    res.json(posts);
 } )
