@@ -1,15 +1,18 @@
 const express = require('express');
 const path = require('path');
 
+const port = process.env.PORT || 8000;
+
 const app = express();
 // we use this app variable everywhere to create routes, apis, etc...
 
-app.listen(8000, ()=> console.log("Server is running in port 8000"));
+app.listen(8000, ()=> console.log(`Server is running in port ${port}`) );
 
 
 //setup static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+//app
 
 // app.get('/',(req,res)=>{
 //     // res.send("k xaaa") 
