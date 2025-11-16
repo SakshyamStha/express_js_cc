@@ -59,5 +59,10 @@ app.get('/api/posts', (req,res)=>{
 app.get('/api/posts/:id', (req,res)=>{
     const id = parseInt(req.params.id);
     const post = posts.find(p => p.id === id);
-    res.json(post);
+
+    if(post){
+        res.status(200).json(post);
+    }else{
+        res.status(404).json({message: `Post not found with id ${id}`});
+    }
 });
