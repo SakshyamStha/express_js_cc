@@ -43,6 +43,15 @@ let posts =[
     }
 ]
 
+// get all posts
 app.get('/api/posts', (req,res)=>{
     res.json(posts);
-} )
+});
+
+
+// get single post dynamically by id
+app.get('/api/posts/:id', (req,res)=>{
+    const id = parseInt(req.params.id);
+    const post = posts.find(p => p.id === id);
+    res.json(post);
+});
